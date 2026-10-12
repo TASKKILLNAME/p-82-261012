@@ -3,6 +3,8 @@ package com.back
 class App {
 
     fun run() {
+
+        val wiseSayings = mutableListOf<WiseSaying>()
         var lastId = 0
 
         println("== 명언 앱 ==")
@@ -22,7 +24,19 @@ class App {
                     val author: String = readln()
 
                     val id = ++lastId
-                    println("${id}번 명언이 등록되었습니다.")
+
+                    val wiseSaying = WiseSaying(id, content, author).also {
+                        wiseSayings.add(it)
+                    }
+
+                    println("${wiseSaying.id}번 명언이 등록되었습니다.")
+                }
+                "목록" -> {
+                    println("번호 / 명언 / 작가")
+                    println("-------------------------")
+                    wiseSayings.reversed().forEach {
+                        println("${it.id} / ${it.content} / ${it.author}")
+                    }
                 }
             }
         }
