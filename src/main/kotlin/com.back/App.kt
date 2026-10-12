@@ -15,6 +15,8 @@ class App {
 
             val cmd: String = readln()
 
+            val rq = Rq()
+
             when (cmd) {
                 "종료" -> break
                 "등록" -> {
@@ -37,6 +39,16 @@ class App {
                     wiseSayings.reversed().forEach {
                         println("${it.id} / ${it.content} / ${it.author}")
                     }
+                }
+
+                "삭제" -> {
+                    val id: Int = rq.getParamAsInt("id", 0)
+
+                    wiseSayings.removeIf {
+                        it.id == id
+                    }
+
+                    wiseSayings.
                 }
             }
         }
